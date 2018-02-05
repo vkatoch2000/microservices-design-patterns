@@ -173,6 +173,8 @@ Scenarios where the system is expected to evolve over time and might contain mul
 Integration with other systems, especially in combination with event sourcing, where the temporal failure of one subsystem shouldn&#39;t affect the availability of the others.
 
 
+**CREATE SELF SIGNED CERTIFICATE**
+
 The following properties are necessary for configuring Spring Zuul Proxy with SSL
 
 Create a self signed certificate
