@@ -1,0 +1,7 @@
+{
+  "realm": "auth",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "gatewayrouter-frontend",
+  "public-client": true
+}

@@ -1,0 +1,6 @@
+[
+  {
+    "role": "OrgAdmin",
+    "urlPatterns": ["/booking/*"]
+  }
+]

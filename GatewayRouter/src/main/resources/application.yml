@@ -1,0 +1,53 @@
+spring:
+  application:
+    name : gatewayrouter
+server:
+  port: ${port:9004}
+  ssl:
+      enabled: false
+      key-store: classpath:keystore.jks
+      key-store-password: zulu12
+      key-alias: selfsigned
+      keyStoreType: JKS
+management:
+     security:
+         enabled: true
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:9006/eureka
+zuul:
+   retryable: true
+   ribbonIsolationStrategy: THREAD
+   ignored-services: '*'
+   routes:
+      echo:
+           path: /booking/**
+           serviceId: AggregatorService
+           stripPrefix: true
+cors:
+   enabled: true
+
+
+keycloak:
+  application:
+              id: gatewayrouter
+
+#keycloak:
+ # cors: true
+ # realm: auth
+ # resource: gatewayrouter
+  #security-constraints[0]:
+ #                   authRoles[0]: OrgAdmin
+ #                   securityCollections[0]:
+#                    patterns[0]: /booking/*
+ # auth-server-url: http://localhost:8080/auth
+#  bearer-only: true #the policy enforcer decides whether a request to access a protected resource is allowed or denied based on the permissions of the bearer token.
+#  use-resource-role-mappings: true
+
+
+
+
+
+
+

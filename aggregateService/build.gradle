@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+     ext{
+         springBootVersion = '1.5.2.RELEASE'
+     }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+
+    }
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'maven-publish'
+group = 'com.edifecs'
+version = '1.0.0'
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.RC1"
+    }
+}
+
+// targetCompatibility  same as that of sourceCompatibility
+sourceCompatibility = 1.8
+
+// While adding external     dependencies, Gradle looks for them in a repository.
+        repositories {
+            jcenter() // largest java repository in the world (includes all maven central repository well)
+            mavenCentral()
+            maven { url "https://repo.spring.io/snapshot" }
+            maven { url "https://repo.spring.io/milestone" }
+
+}
+
+// external dependencies
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web') //Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container
+    compile('org.springframework.cloud:spring-cloud-starter-feign')// enable feign client to communicate with other micro services
+    compile('org.springframework.boot:spring-boot-starter-actuator') //sprint boot expose some ebuilt-in nd points by default Health and info are not sensitive by default.
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.cloud:spring-cloud-starter-hystrix') // enable circut breaker
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("junit:junit")
+
+}
+
+
+

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name : HotelBookingMicroService
+server:
+  port: ${port:9005}
+management:
+     security:
+         enabled: false
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:9006/eureka/
+

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name : AggregatorService
+server:
+  port: ${port:9001}
+management:
+     security:
+         enabled: false
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:9006/eureka/
+ribbon:
+        ConnectTimeout: 5000
+        ReadTimeout: 5000
+        OkToRetryOnAllOperations: true
+        MaxAutoRetriesNextServer: 1
+        MaxAutoRetries: 1
+feign:
+  hystrix:
+   enabled: true
+

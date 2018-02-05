@@ -1,0 +1,17 @@
+spring:
+  application:
+    name : EurekaServer
+server:
+  port: ${port:9006}
+management:
+     security:
+         enabled: false
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false #Simply tells this instance to not register itself with Eureka
+    fetchRegistry: false  # avoid to use as client
+
+
+

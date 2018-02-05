@@ -1,0 +1,15 @@
+spring:
+  application:
+    name : conferencebookingservice
+server:
+  port: ${port:9002}
+management:
+     security:
+         enabled: false
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:9006/eureka/
+
+
+

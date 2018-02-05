@@ -1,0 +1,55 @@
+
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+ext {
+	jarName = 'EurekaServer'
+	extens = ".jar"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+version = '1.0.0'
+group = 'com.edifecs'
+
+sourceCompatibility = 1.8
+
+jar {
+	baseName = 'EurekaServer'
+	version = '1.0.0'
+
+}
+
+repositories {
+	mavenCentral()
+	jcenter() // largest java repository in the world (includes all maven central repository well)
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.cloud:spring-cloud-starter-eureka-server') // implement a Eureka Server on Spring Boot
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.RC1"
+    }
+}
+

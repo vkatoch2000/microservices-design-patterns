@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+
+ext {
+	keycloakVersion = '3.4.2.Final'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.edifecs'
+version = '1.0.0'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+	maven {url "https://ennexus.corp.edifecs.com/content/groups/public/"}
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.RC1"
+		// mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
+	}
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	// compile('org.keycloak:keycloak-spring-boot-starter')  // add keycloak adpater in spring boot apps
+	compile('com.collablynk.accounts:spring-boot-starter-keycloak:2.18')
+	compile('com.collablynk.accounts:cl-keycloak-adapter-core:2.18')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+

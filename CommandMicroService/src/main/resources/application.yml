@@ -1,0 +1,15 @@
+spring:
+  application:
+    name : commandservice
+server:
+  port: ${port:9007}
+management:
+     security:
+         enabled: false
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:9006/eureka/
+
+
+
